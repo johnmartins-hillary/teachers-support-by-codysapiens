@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 /* dont delete anything above */
+
+body{
+  @apply bg-white text-black
+}
