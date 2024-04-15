@@ -1,17 +1,25 @@
-import { Montserrat } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
+import Login from "./(auth)/login/page";
+import CreateAccount from "./(auth)/register/page";
+import ResetPassword from "./(auth)/reset-password/page";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Teacher Support Tool",
-  description: "Built y team CodeSap....",
+  description: "Built by team CodeSapiens....",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className={raleway.className}>
+        <Login />
+        <CreateAccount />
+        {/* <ResetPassword /> */}
+        <div>{children}</div>
+      </body>
     </html>
   );
 }
