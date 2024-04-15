@@ -1,9 +1,13 @@
 import React from 'react'
+import StoreProvider from '../../StoreProvider'
+import Feedback from './Feedback'
 
-const Feedback = () => {
+const page = () => {
   return (
-    <div>Feedback</div>
+    <StoreProvider>
+      <Feedback />
+    </StoreProvider>
   )
 }
 
-export default Feedback
+export default page

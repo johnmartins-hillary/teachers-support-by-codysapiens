@@ -1,6 +1,6 @@
 "use client";
-import StoreProvider from "./StoreProvider";
+import Login from "./auth/login/page";
 
 export default function Home() {
-  return <StoreProvider>Edit Here</StoreProvider>;
+  return <Login />;
 }

@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import StoreProvider from "../../StoreProvider";
+import CalenderEvents from "./CalenderEvent";
 
-const CalenderEvents = () => {
+const page = () => {
   return (
-    <div>CalenderEvents</div>
-  )
-}
+    <StoreProvider>
+      <CalenderEvents />
+    </StoreProvider>
+  );
+};
 
-export default CalenderEvents
+export default page;

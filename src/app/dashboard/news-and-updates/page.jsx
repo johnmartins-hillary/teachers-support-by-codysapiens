@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import StoreProvider from "../../StoreProvider";
+import NewAndUpdates from "./NewsAndUpdates";
 
-const NewAndUpdates = () => {
+const page = () => {
   return (
-    <div>NewAndUpdates</div>
-  )
-}
+    <StoreProvider>
+      <NewAndUpdates />
+    </StoreProvider>
+  );
+};
 
-export default NewAndUpdates
+export default page;

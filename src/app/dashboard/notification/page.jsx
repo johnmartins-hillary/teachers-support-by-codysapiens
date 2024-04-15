@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import StoreProvider from "../../StoreProvider";
 
-const Notifications = () => {
+const page = () => {
   return (
-    <div>Notifications</div>
-  )
-}
+    <StoreProvider>
+      <Notifications />
+    </StoreProvider>
+  );
+};
 
-export default Notifications
+export default page;
