@@ -1,8 +1,7 @@
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import Login from "./(auth)/login/page";
-import CreateAccount from "./(auth)/register/page";
-import ResetPassword from "./(auth)/reset-password/page";
+import Login from "../../backend-app/(auth)/login/page";
+import Register from './../../backend-app/(auth)/register/page';
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -16,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={raleway.className}>
         <Login />
-        <CreateAccount />
+        <Register />
         {/* <ResetPassword /> */}
         <div>{children}</div>
       </body>

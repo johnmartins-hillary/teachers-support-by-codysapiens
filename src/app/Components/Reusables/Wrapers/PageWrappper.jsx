@@ -1,23 +1,24 @@
-"use client"
-// import Header from "../../Nav/Header";
+"use client";
+
+import { selectNav } from "../../../../lib/features/navSlice";
 import Sidebar from "../../Nav/Sidebar";
-import StoreProvider from './../../../StoreProvider';
+import Header from "./../../Nav/Header";
+import { useSelector } from "react-redux";
 
 const PageWrapper = ({ children }) => {
+  const { openSidebar } = useSelector(selectNav);
   return (
-    <StoreProvider>
-    <div className="flex w-full h-full ">
+    <div className="flex w-full h-full bg-purple-50">
       <Sidebar />
       <div
         className={`flex flex-col  ${
-          //  " openSidebar ? "w-[80%]" : "w-[95%]""
-          ""
+          openSidebar ? "w-[80%]" : "w-[95%]"
         } h-screen overflow-y-auto`}
       >
-        {/* <Header /> */}
+        <Header />
         {children}
       </div>
-    </div></StoreProvider>
+    </div>
   );
 };
 

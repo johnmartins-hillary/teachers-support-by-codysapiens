@@ -1,11 +1,11 @@
 import React from "react";
 import StoreProvider from "../../StoreProvider";
-import ResourcesAndLibraryPage from "./Resources"
+import Blogs from "./Blogs";
 
 const page = () => {
   return (
     <StoreProvider>
-      <ResourcesAndLibraryPage />
+      <Blogs />
     </StoreProvider>
   );
 };

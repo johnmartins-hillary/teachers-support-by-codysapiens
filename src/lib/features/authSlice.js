@@ -6,6 +6,12 @@ const initialState = {
   loggedInUser: null,
   email: "",
   password: "",
+
+  // reistration
+  registerationEmail: "",
+  registerationPassword: "",
+  field: "",
+  confirmPassword: "",
 };
 
 export const authSlice = createSlice({

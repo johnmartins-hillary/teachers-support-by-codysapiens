@@ -1,8 +1,13 @@
-import React from "react";
-import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
+import React from 'react'
+import StoreProvider from '../../StoreProvider'
+import Home from './Home'
 
-const Home = () => {
-  return <PageWrapper>Home</PageWrapper>;
-};
+const page = () => {
+  return (
+    <StoreProvider>
+      <Home />
+    </StoreProvider>
+  )
+}
 
-export default Home;
+export default page

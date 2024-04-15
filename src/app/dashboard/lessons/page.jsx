@@ -1,8 +1,12 @@
 import React from 'react'
+import StoreProvider from '../../StoreProvider'
+import Lessons from './Lessons'
 
 const page = () => {
   return (
-    <div>page</div>
+    <StoreProvider>
+      <Lessons />
+    </StoreProvider>
   )
 }
 

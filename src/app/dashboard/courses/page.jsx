@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import StoreProvider from "../../StoreProvider";
 
-const Courses = () => {
+const page = () => {
   return (
-    <div>Courses</div>
-  )
-}
+    <StoreProvider>
+      <Courses />
+    </StoreProvider>
+  );
+};
 
-export default Courses
+export default page;

@@ -8,7 +8,7 @@ import Input from "../../Components/Form/Input";
 import Button from "../../Components/Form/Button";
 import Link from "next/link";
 
-const CreateAccount = () => {
+const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     field: "",
@@ -112,4 +112,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default Register;

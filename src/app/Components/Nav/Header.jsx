@@ -5,13 +5,13 @@ import Input from "../Form/Input";
 
 const Header = () => {
   return (
-    <div className="px-8 py-4 flex justify-between border-b-2 border-b-gray-500 w-full items-center">
+    <div className="px-8 py-4 flex justify-between  border-b-gray-500 w-full items-center shadow-md bg-white">
       <Input
         placeholder="Search"
         customClassName={"rounded-full w-[350px] outline-none"}
       />
       <div className="flex gap-10 items-center">
-        <IoIosNotificationsOutline size={24} cursor={"pointer"} />
+        <IoIosNotificationsOutline size={24} cursor={"pointer"}  color="text-gray-700"/>
         <HeaderDropdown />
       </div>
     </div>

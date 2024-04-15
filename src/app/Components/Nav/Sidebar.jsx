@@ -15,7 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { PiStudent } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { useRouter } from "next/navigation";
-import { selectNav } from "./../../../lib/features/navSlice";
+import { selectNav, toggleSidebar } from "./../../../lib/features/navSlice";
+import { logoutUser } from "../../../lib/features/authSlice";
 
 const Sidebar = () => {
   const { openSidebar } = useSelector(selectNav);
@@ -66,7 +67,7 @@ const Sidebar = () => {
       title: "Calender Events",
       icon: <SlCalender size={18} />,
       gap: true,
-      link: "/dashboard/calender-events",
+      link: "/dashboard/calender-event",
     },
     {
       title: "Networking",
@@ -88,8 +89,8 @@ const Sidebar = () => {
   return (
     <div
       className={` ${
-        openSidebar ? "w-[20%]" : "w-[5%] "
-      } bg-dark-purple h-screen p-5  pt-8 relative duration-300 border-r-2 border-gray-500 filter-blur(20) overflow-y-auto overflow-x-hidden z-50`}
+        openSidebar ? "w-[20%]" : "w-[5%]"
+      } bg-slate-800 h-screen p-5  pt-8 relative duration-300 border-r-2 border-gray-500  overflow-y-auto overflow-x-hidden z-50`}
     >
       <FaCircleChevronLeft
         className={`absolute cursor-pointer -right-3 top-9 w-7 z-10  ${
@@ -117,12 +118,11 @@ const Sidebar = () => {
         {Menus.map((Menu, index) => (
           <li
             key={index}
-            className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+          >
+            <a href={Menu?.link} className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${
               index === 0 && "bg-light-white "
-            } `}
-          >
-            <a href={Menu?.link}>
+            } `}>
               <span className="rounded-md border border-1 border-gray-500 p-2">
                 {Menu.icon}
               </span>
