@@ -61,13 +61,14 @@ import { getAuthDetails, selectAuth, setLoggedInUser } from "../../../lib/featur
               btnText={"Log in"}
               type={"submit"}
               onClickHandler={handleLogin}
+              customClassName=" w-full"
             />
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
             <a
-              href="auth/create-account"
+              href="/auth/create-account"
               className="font-semibold leading-6 text-purple-600 hover:text-purple-500"
             >
               Sign up

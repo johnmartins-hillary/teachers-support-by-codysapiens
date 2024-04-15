@@ -19,7 +19,7 @@ const Input = ({
       <div className="flex items-center justify-between">
         <label
           htmlFor="email"
-          className="block text-sm font-medium leading-6 text-white"
+          className="block text-sm font-medium leading-6 text-gray-600"
         >
           {label}
         </label>
@@ -40,7 +40,7 @@ const Input = ({
           type={type}
           required={required}
           className={
-            "block w-full rounded-md border border-transparent px-2 py-2 transition-colors  text-gray-200 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6 bg-transparent " +
+            "block w-full rounded-md border border-transparent px-2 py-2 transition-colors  text-gray-500 shadow-md ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-1 focus:ring-outset focus:ring-purple-400 sm:text-sm sm:leading-6 bg-white " +
             customClassName
           }
           onChange={onChangeHandler}

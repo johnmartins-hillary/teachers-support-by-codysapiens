@@ -26,7 +26,7 @@ const ResetPassword = () => {
             label="Confirm New Password"
             innerLink={"#"}
           />
-          <Button btnText={"Sign up"} type={"submit"} />
+          <Button btnText={"Sign up"} type={"submit"} customClassName=" w-full"/>
         </form>
       </div>
     </AuthWrapper>

@@ -5,6 +5,8 @@ import Input from "../../Components/Form/Input";
 import TextArea from "../../Components/Form/TextArea";
 import Button from "../../Components/Form/Button";
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
+import WhiteShadowCard from "../../Components/Reusables/Cards/WhiteShadowCard";
+
 
 // Sample data for posts and comments
 const initialPosts = [
@@ -58,7 +60,7 @@ const DiscussionForum = () => {
     <PageWrapper>
       <div className="container mx-auto mt-8 px-8 overflow-y-auto h-full">
         {/* Form to create new posts */}
-        <form onSubmit={handleNewPostSubmit} className="mb-10">
+        <form onSubmit={handleNewPostSubmit} className="mb-10 relative">
           <Input
             type="text"
             placeholder="Enter post title"
@@ -79,15 +81,14 @@ const DiscussionForum = () => {
           />
         </form>
         {/* List of posts */}
-        {posts.map((post) => (
-          <div
+        {posts?.map((post) => (
+          <WhiteShadowCard
             key={post.id}
-            className="border border-gray-300 rounded-lg p-4 mb-4"
+            title={post?.title}
           >
-            <h2 className="text-xl font-bold">{post.title}</h2>
             <p>{post.content}</p>
             {/* List of comments */}
-            <ul className="mt-2">
+            <ul className="mt-2 text-gray-500">
               {post.comments.map((comment, index) => (
                 <li key={index} className="ml-4">
                   {comment}
@@ -116,7 +117,7 @@ const DiscussionForum = () => {
                 btnText={"Add Comment"}
               />
             </form>
-          </div>
+          </WhiteShadowCard>
         ))}
       </div>
     </PageWrapper>

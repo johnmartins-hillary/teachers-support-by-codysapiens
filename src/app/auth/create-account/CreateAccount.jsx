@@ -28,7 +28,7 @@ const CreateAccount = () => {
             placeholder="Re enter your password"
             label="Confirm Password"
           />
-          <Button btnText={"Sign up"} type={"submit"} />
+          <Button btnText={"Sign up"} type={"submit"} customClassName=" w-full"/>
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">

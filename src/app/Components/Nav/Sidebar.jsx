@@ -90,7 +90,7 @@ const Sidebar = () => {
     <div
       className={` ${
         openSidebar ? "w-[20%]" : "w-[5%]"
-      } bg-dark-purple h-screen p-5  pt-8 relative duration-300 border-r-2 border-gray-500 filter-blur(20) overflow-y-auto overflow-x-hidden z-50`}
+      } bg-slate-800 h-screen p-5  pt-8 relative duration-300 border-r-2 border-gray-500  overflow-y-auto overflow-x-hidden z-50`}
     >
       <FaCircleChevronLeft
         className={`absolute cursor-pointer -right-3 top-9 w-7 z-10  ${
