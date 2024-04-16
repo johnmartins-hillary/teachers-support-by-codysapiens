@@ -1,6 +1,6 @@
-import User from "@/app/mongoDb/userModel";
 import { NextResponse } from "next/server";
-import { connectDB } from '@/app/mongoDb/connectDb';
+import User from "../../../mongoDb/userModel";
+import connectDB from '../../../mongoDb/connectDb';
 
 export async function POST(req) {
   if (req.method === "POST") {

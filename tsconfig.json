@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/auth/create-account/CreateAccount.jsx", "src/app/auth/reset-password/ResetPassword.jsx"  ],
+, "src/app/auth/create-account/CreateAccount.jsx", "src/app/auth/reset-password/ResetPassword.jsx", "src/Helpers/AuthCheck.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,5 +1,6 @@
 "use client";
 
+import AuthCheck from "../../../../Helpers/AuthCheck";
 import { selectNav } from "../../../../lib/features/navSlice";
 import Sidebar from "../../Nav/Sidebar";
 import Header from "./../../Nav/Header";
@@ -9,6 +10,7 @@ const PageWrapper = ({ children }) => {
   const { openSidebar } = useSelector(selectNav);
   return (
     <div className="flex w-full h-full bg-purple-50">
+      <AuthCheck />
       <Sidebar />
       <div
         className={`flex flex-col  ${

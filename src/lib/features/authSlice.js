@@ -6,6 +6,8 @@ const initialState = {
   loggedInUser: null,
   email: "",
   password: "",
+  loggingin: false,
+  creatingAccount: false,
 
   // reistration
   registerationEmail: "",
@@ -21,6 +23,12 @@ export const authSlice = createSlice({
     setLoggedInUser: (state, action) => {
       state.loggedInUser = action.payload;
     },
+    setLoggingIn: (state, action) => {
+      state.loggingin = action.payload;
+    },
+    setCreatingAccount: (state, action) => {
+      state.creatingAccount = action.payload;
+    },
     logoutUser: (state) => {
       localStorage.clear();
       state.loggedInUser = null;
@@ -32,7 +40,12 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setLoggedInUser, getAuthDetails, logoutUser } =
-  authSlice.actions;
+export const {
+  setLoggedInUser,
+  getAuthDetails,
+  logoutUser,
+  setLoggingIn,
+  setCreatingAccount,
+} = authSlice.actions;
 export const selectAuth = (state) => state.auth;
 export const authReducer = authSlice.reducer;

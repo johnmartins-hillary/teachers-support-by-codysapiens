@@ -1,4 +1,5 @@
 import React from "react";
+import PulseLoader from "../Loaders/PulseLoader"
 
 const Button = ({
   btnText,
@@ -6,6 +7,7 @@ const Button = ({
   customClassName,
   disabled,
   type,
+  loading
 }) => {
   return (
     <button
@@ -17,7 +19,7 @@ const Button = ({
       disabled={disabled}
       onClick={onClickHandler}
     >
-      {btnText}
+      {loading ? <PulseLoader size={10} color="#fff"/> : btnText}
     </button>
   );
 };

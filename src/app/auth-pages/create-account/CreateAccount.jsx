@@ -1,13 +1,16 @@
+"use client";
+
 import React from "react";
 import AuthWrapper from "../../Components/Reusables/Wrapers/AuthWrapper";
 import Input from "../../Components/Form/Input";
 import Button from "../../Components/Form/Button";
-import { selectAuth } from "../../../lib/features/authSlice";
-import { useDispatch } from "react-redux";
+import { getAuthDetails, selectAuth } from "../../../lib/features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../(APICalls)/auth";
+import { toast } from "react-toastify";
 
 const CreateAccount = () => {
-  const { registrationEmail, registrationPassword, field, confirmPassword } =
+  const { registrationEmail, registrationPassword, field, confirmPassword, creatingAccount } =
     useSelector(selectAuth);
   const dispatch = useDispatch();
 
@@ -49,6 +52,7 @@ const CreateAccount = () => {
             label="Email Address"
             value={registrationEmail}
             onChangeHandler={handleInputChange}
+            name="registrationEmail"
           />
           <Input
             type="text"
@@ -56,6 +60,7 @@ const CreateAccount = () => {
             label="Field"
             value={field}
             onChangeHandler={handleInputChange}
+            name="field"
           />
           <Input
             type="password"
@@ -63,6 +68,7 @@ const CreateAccount = () => {
             label="Password"
             value={registrationPassword}
             onChangeHandler={handleInputChange}
+            name="registrationPassword"
           />
           <Input
             type="password"
@@ -70,18 +76,20 @@ const CreateAccount = () => {
             label="Confirm Password"
             value={confirmPassword}
             onChangeHandler={handleInputChange}
+            name="confirmPassword"
           />
           <Button
             btnText={"Sign up"}
             type={"submit"}
             customClassName=" w-full"
+            loading={creatingAccount}
           />
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Already a member?{" "}
           <a
-            href="/auth/login"
+            href="/auth-pages/login"
             className="font-semibold leading-6 text-purple-600 hover:text-purple-500"
           >
             Login

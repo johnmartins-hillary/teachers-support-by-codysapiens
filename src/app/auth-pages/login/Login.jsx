@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { email, password } = useSelector(selectAuth);
+  const { email, password, loggingin } = useSelector(selectAuth);
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -44,7 +44,7 @@ const Login = () => {
             type="password"
             placeholder="Enter your password"
             label="Password"
-            innerLink={"/auth/reset-password"}
+            innerLink={"/auth-pages/reset-password"}
             innerLinkText={"Forgot password?"}
             value={password}
             onChangeHandler={handleInputChange}
@@ -56,13 +56,14 @@ const Login = () => {
             type={"submit"}
             onClickHandler={handleLogin}
             customClassName=" w-full"
+            loading={loggingin}
           />
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?{" "}
           <a
-            href="/auth/create-account"
+            href="/auth-pages/create-account"
             className="font-semibold leading-6 text-purple-600 hover:text-purple-500"
           >
             Sign up
