@@ -1,7 +1,8 @@
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import Login from "../../backend-app/(auth)/login/page";
-import Register from './../../backend-app/(auth)/register/page';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -14,10 +15,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={raleway.className}>
-        <Login />
-        <Register />
-        {/* <ResetPassword /> */}
         <div>{children}</div>
+      <ToastContainer position="bottom-left" />
       </body>
     </html>
   );

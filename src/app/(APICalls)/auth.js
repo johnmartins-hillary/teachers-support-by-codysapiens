@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const loginUser = async (formData) => {
   try {
     const res = await fetch("/api/login", {

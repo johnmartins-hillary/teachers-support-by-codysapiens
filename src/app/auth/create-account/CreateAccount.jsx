@@ -3,42 +3,41 @@ import AuthWrapper from "../../Components/Reusables/Wrapers/AuthWrapper";
 import Input from "../../Components/Form/Input";
 import Button from "../../Components/Form/Button";
 import { selectAuth } from "../../../lib/features/authSlice";
-import { useDispatch } from 'react-redux';
-import {createUser} from "../../../../backend-app/APICalls/auth"
+import { useDispatch } from "react-redux";
+import { createUser } from "../../(APICalls)/auth";
 
 const CreateAccount = () => {
   const { registrationEmail, registrationPassword, field, confirmPassword } =
     useSelector(selectAuth);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  
-    const handleInputChange = (e) => {
-      e.preventDefault();
-      const { name, value } = e.target;
-      dispatch(getAuthDetails({ name, value }));
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    dispatch(getAuthDetails({ name, value }));
   };
-  
-   const handleSignUp = async (e) => {
-     e.preventDefault();
 
-     if (
-       !registrationEmail ||
-       !field ||
-       !registrationPassword ||
-       !confirmPassword
-     ) {
-       toast.error("All fields are required!");
-     } else if (registrationPassword !== confirmPassword) {
-       toast.error("Passwords do not match!");
-     } else {
-       createUser({
-             email: registrationEmail,
-             field,
-             password: registrationPassword,
-             confirmPassword,
-           })
-     }
-   };
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    if (
+      !registrationEmail ||
+      !field ||
+      !registrationPassword ||
+      !confirmPassword
+    ) {
+      toast.error("All fields are required!");
+    } else if (registrationPassword !== confirmPassword) {
+      toast.error("Passwords do not match!");
+    } else {
+      createUser({
+        email: registrationEmail,
+        field,
+        password: registrationPassword,
+        confirmPassword,
+      });
+    }
+  };
 
   return (
     <AuthWrapper pageTitle={"Create an account"}>
