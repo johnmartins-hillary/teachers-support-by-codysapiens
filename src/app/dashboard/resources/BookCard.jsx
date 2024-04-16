@@ -9,7 +9,7 @@ const BookCard = ({ image, title, author, description }) => {
       <div className="flex flex-col justify-between h-full">
         <div>
           <h3 className="text-xl font-semibold mb-2">{title}</h3>
-          <p className="text-gray-600 mb-2">{author}</p>
+          <p className="text-red-600 mb-2">{author}</p>
           <p className="text-gray-700">{description}</p>
         </div>
       </div>

@@ -59,7 +59,7 @@ const BooksPage = () => {
 
   return (
     <PageWrapper>
-      <div className="container mx-auto my-8 px-8 gap-y-4">
+      <div className="container mx-auto my-8 px-8 gap-y-4 text-gray-500">
         <h1 className="text-3xl font-bold mb-8 text-gray-500">Books</h1>
         <SearchBar placeholder="Search books..." onSearch={handleSearch} />
         <BooksGrid books={displayedBooks} />
