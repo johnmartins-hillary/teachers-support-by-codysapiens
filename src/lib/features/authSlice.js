@@ -22,6 +22,7 @@ export const authSlice = createSlice({
   reducers: {
     setLoggedInUser: (state, action) => {
       state.loggedInUser = action.payload;
+      window.location.href="/dashboard/home"
     },
     setLoggingIn: (state, action) => {
       state.loggingin = action.payload;
@@ -32,6 +33,7 @@ export const authSlice = createSlice({
     logoutUser: (state) => {
       localStorage.clear();
       state.loggedInUser = null;
+      window.location.href = "/"
     },
     getAuthDetails: (state, action) => ({
       ...state,

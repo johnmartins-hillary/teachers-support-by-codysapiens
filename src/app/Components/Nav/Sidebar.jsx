@@ -15,8 +15,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { PiStudent } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { useRouter } from "next/navigation";
+import {useRouter as useLocation} from "next/router"
 import { selectNav, toggleSidebar } from "./../../../lib/features/navSlice";
 import { logoutUser } from "../../../lib/features/authSlice";
+import { PiChatCircleDots } from "react-icons/pi";
+import Link from "next/Link"
+
 
 const Sidebar = () => {
   const { openSidebar } = useSelector(selectNav);
@@ -33,13 +37,7 @@ const Sidebar = () => {
     {
       title: "Resource Library",
       icon: <GoBook size={18} />,
-      gap: true,
       link: "/dashboard/resources",
-    },
-    {
-      title: "Courses ",
-      icon: <FaRegBookmark size={18} />,
-      link: "/dashboard/courses",
     },
     {
       title: "Students",
@@ -53,16 +51,11 @@ const Sidebar = () => {
       link: "/dashboard/lessons",
     },
     {
-      title: "Job Board",
-      icon: <VscSearch size={18} />,
-      link: "/dashboard/job-board",
-      gap: true,
+      title: "Chat Student ",
+      icon: <PiChatCircleDots size={18} />,
+      link: "/dashboard/chat",
     },
-    {
-      title: "Blog",
-      icon: <TbBrandBlogger size={18} />,
-      link: "/dashboard/blog",
-    },
+
     {
       title: "Calender Events",
       icon: <SlCalender size={18} />,
@@ -85,6 +78,7 @@ const Sidebar = () => {
       link: "/dashboard/settings",
     },
   ];
+
 
   return (
     <div
@@ -119,7 +113,7 @@ const Sidebar = () => {
           <li
             key={index}
           >
-            <a href={Menu?.link} className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+            <Link href={Menu?.link} className={`flex relative rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${
               index === 0 && "bg-light-white "
             } `}>
@@ -133,7 +127,8 @@ const Sidebar = () => {
               >
                 {Menu.title}
               </span>
-            </a>
+              {/* {window.location.pathname === Menu?.link && <span className="absolute top-0 right-0 h-full w-1 bg-white"></span>} */}
+            </Link>
           </li>
         ))}
       </ul>

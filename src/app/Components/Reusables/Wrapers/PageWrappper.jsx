@@ -10,7 +10,7 @@ const PageWrapper = ({ children }) => {
   const { openSidebar } = useSelector(selectNav);
   return (
     <div className="flex w-full h-full bg-purple-50">
-      <AuthCheck />
+      {/* <AuthCheck /> */}
       <Sidebar />
       <div
         className={`flex flex-col  ${

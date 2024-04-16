@@ -86,7 +86,7 @@ const UserSettingsPage = () => {
                 name="notifications"
                 checked={user.notifications}
                 onChange={handleChange}
-                className="mr-2 rounded text-blue-500 border-gray-300 focus:ring-blue-400"
+                className="mr-2 rounded text-purple-500 border-gray-300 focus:ring-purple-400"
               />
               <label
                 htmlFor="notifications"
@@ -98,7 +98,7 @@ const UserSettingsPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            className="bg-purple-500 text-white px-4 py-2 rounded-md"
           >
             Save Changes
           </button>

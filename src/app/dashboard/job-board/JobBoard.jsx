@@ -56,7 +56,7 @@ const JobSearchBoard = () => {
 
   return (
     <PageWrapper>
-      <div className="container mx-auto mt-8 px-8 overflow-y-auto h-full">
+      <div className="container mx-auto mt-8 px-8 overflow-y-auto h-full text-gray-500">
         <h1 className="text-3xl font-bold mb-4">Job Search Board</h1>
         {/* Search/filter input */}
         <input
@@ -96,7 +96,7 @@ const JobSearchBoard = () => {
                     onClick={() => handlePageChange(i + 1)}
                     className={`mx-1 px-3 py-1 rounded-md ${
                       currentPage === i + 1
-                        ? "bg-blue-500 text-white"
+                        ? "bg-purple-500 text-white"
                         : "bg-gray-200 text-gray-700"
                     }`}
                   >

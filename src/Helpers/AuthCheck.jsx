@@ -11,8 +11,7 @@ const AuthCheck = () => {
   useEffect(() => {
     if (loggedInUser) {
       router.push("/dashboard/home");
-    } else {
-      router.push("/auth-pages/login")
+    } else if(!loggedInUser){
     }
   }, [loggedInUser]);
 

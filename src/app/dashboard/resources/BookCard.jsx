@@ -2,11 +2,17 @@ import React from 'react';
 
 const BookCard = ({ image, title, author, description }) => {
   return (
-    <div className="border border-gray-300 rounded-md p-4 bg-white shadow-lg w-full">
-      <img src={image} alt={title} className="mb-4 w-full h-50" />
-      <h3 className="text-lg font-semibold mb-2 text-gray-600">{title}</h3>
-      <p className="text-sm text-gray-600 mb-2 text-red-500">{author}</p>
-      <p className="text-sm text-gray-500">{description}</p>
+    <div className="bg-white rounded-lg shadow-md p-4">
+      <div className="mb-4">
+        <img src={image} alt={title} className="h-48 w-full object-cover rounded-md" />
+      </div>
+      <div className="flex flex-col justify-between h-full">
+        <div>
+          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <p className="text-gray-600 mb-2">{author}</p>
+          <p className="text-gray-700">{description}</p>
+        </div>
+      </div>
     </div>
   );
 };

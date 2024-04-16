@@ -1,10 +1,11 @@
 import React from "react";
 import StoreProvider from "../../StoreProvider";
+import Chat from "./Chat"
 
 const page = () => {
   return (
     <StoreProvider>
-      <Courses />
+      <Chat />
     </StoreProvider>
   );
 };

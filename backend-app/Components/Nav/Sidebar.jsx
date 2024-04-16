@@ -4,8 +4,7 @@ import { BsChatDots } from "react-icons/bs";
 import { SlHome } from "react-icons/sl";
 import { GoBook } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
-import { VscSearch } from "react-icons/vsc";
-import { TbBrandBlogger, TbLogout2 } from "react-icons/tb";
+import { TbLogout2 } from "react-icons/tb";
 import { FaRegBookmark } from "react-icons/fa";
 import { FaNetworkWired } from "react-icons/fa";
 import { GiNewspaper } from "react-icons/gi";
@@ -16,6 +15,7 @@ import { PiStudent } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { useRouter } from "next/navigation";
 import { selectNav } from "./../../../lib/features/navSlice";
+import Link from "next/Link"
 
 const Sidebar = () => {
   const { openSidebar } = useSelector(selectNav);
@@ -50,17 +50,6 @@ const Sidebar = () => {
       title: "Lessons ",
       icon: <LiaChalkboardTeacherSolid size={18} />,
       link: "/dashboard/lessons",
-    },
-    {
-      title: "Job Board",
-      icon: <VscSearch size={18} />,
-      link: "/dashboard/job-board",
-      gap: true,
-    },
-    {
-      title: "Blog",
-      icon: <TbBrandBlogger size={18} />,
-      link: "/dashboard/blog",
     },
     {
       title: "Calender Events",
@@ -122,7 +111,7 @@ const Sidebar = () => {
               index === 0 && "bg-light-white "
             } `}
           >
-            <a href={Menu?.link}>
+            <Link href={Menu?.link}>
               <span className="rounded-md border border-1 border-gray-500 p-2">
                 {Menu.icon}
               </span>
@@ -133,7 +122,7 @@ const Sidebar = () => {
               >
                 {Menu.title}
               </span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
