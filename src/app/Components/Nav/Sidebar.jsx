@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { selectNav, toggleSidebar } from "./../../../lib/features/navSlice";
 import { logoutUser } from "../../../lib/features/authSlice";
 import { PiChatCircleDots } from "react-icons/pi";
+import {logo} from "./logo.jpeg"
 import Link from "next/link";
 
 
@@ -94,7 +95,7 @@ const Sidebar = () => {
       <div className="flex gap-x-4 items-center">
         <img
           className=" h-10 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=600"
+          src={logo}
           alt="Your Company"
         />
         <h1

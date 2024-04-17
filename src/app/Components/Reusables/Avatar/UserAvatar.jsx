@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectUser,
   setUserProfileImg,
-} from "../../../Redux/features/userSlice";
+} from "../../../../lib/features/userSlice";
 import { FaRegUserCircle } from "react-icons/fa";
-import { getImagePreviewFile } from "../../../Helpers/generals";
+import { getImagePreviewFile } from "../../../../Helpers/generals";
 
 const UserAvatar = () => {
   const { userProfileImage } = useSelector(selectUser);
@@ -19,7 +19,7 @@ const UserAvatar = () => {
   };
 
   return (
-    <div className="w-[30px] h-[30px] rounded-full cursor-pointer">
+    <div className="w-[100px] h-[100px] rounded-full cursor-pointer">
       <label htmlFor="file" className="w-full h-full">
         {userProfileImage ? (
           <img src={userProfileImage} alt="" className="w-full h-full rounded-full" />

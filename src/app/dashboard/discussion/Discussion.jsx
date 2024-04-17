@@ -6,13 +6,18 @@ import TextArea from "../../Components/Form/TextArea";
 import Button from "../../Components/Form/Button";
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
 import WhiteShadowCard from "../../Components/Reusables/Cards/WhiteShadowCard";
-import { selectDiscussion,setPosts,setNewPostTitle,setNewPostContent } from "../../../lib/features/discussionSlice";
-import {useSelector, useDispatch} from "react-redux"
+import {
+  selectDiscussion,
+  setPosts,
+  setNewPostTitle,
+  setNewPostContent,
+} from "../../../lib/features/discussionSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const DiscussionForum = () => {
-  const {posts, newPostTitle, newPostContent} = useSelector(selectDiscussion)
-  const dispatch  = useDispatch()
+  const { posts, newPostTitle, newPostContent } = useSelector(selectDiscussion);
+  const dispatch = useDispatch();
 
   const handleNewPostSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +30,7 @@ const DiscussionForum = () => {
     dispatch(setPosts([...posts, newPost]));
     dispatch(setNewPostTitle(""));
     dispatch(setNewPostContent(""));
-    toast.success("post added successfully")
+    toast.success("Discussion started");
   };
 
   const handleCommentSubmit = (postId, commentContent) => {
@@ -67,18 +72,20 @@ const DiscussionForum = () => {
         </form>
         {/* List of posts */}
         {posts?.map((post) => (
-          <WhiteShadowCard
-            key={post.id}
-            title={post?.title}
-          >
+          <WhiteShadowCard key={post.id} title={post?.title}>
             <p>{post.content}</p>
             {/* List of comments */}
-            <ul className="mt-2 text-gray-500">
-              {post.comments.map((comment, index) => (
-                <li key={index} className="ml-4">
-                  {comment}
-                </li>
-              ))}
+            <h4 className="text-gray-500 underline mt-2 text-lg ml-4">
+              Comments
+            </h4>
+            <ul className="text-blue-500 list-disc ml-4">
+              {post?.comments
+                ?.reverse()
+                ?.map((comment, index) => (
+                  <li key={index} className="ml-4">
+                    {comment}
+                  </li>
+                ))}
             </ul>
             {/* Form to add comments */}
             <form

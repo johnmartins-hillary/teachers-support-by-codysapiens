@@ -19,7 +19,7 @@ export async function POST(req) {
     await newUser.save();
     console.log("signup success")
     return NextResponse.json(
-      { message: "account created" },
+      { message: "Your account has been created successfully" },
       { success: true },
       { status: 201 }
     );

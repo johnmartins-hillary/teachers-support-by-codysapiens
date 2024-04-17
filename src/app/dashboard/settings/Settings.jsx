@@ -1,8 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
+import { selectAuth } from "../../../lib/features/authSlice";
+import { useSelector } from "react-redux";
+import UserAvatar from "../../Components/Reusables/Avatar/UserAvatar"
+
 
 const UserSettingsPage = () => {
+  const {loggedInUser} = useSelector(selectAuth)
   // Sample user data
   const [user, setUser] = useState({
     username: "example_user",
@@ -27,26 +32,10 @@ const UserSettingsPage = () => {
 
   return (
     <PageWrapper>
-      <div className="container mx-auto mt-8 px-8 overflow-y-auto h-full">
+      <div className="container mx-auto mt-8 px-8 overflow-y-auto h-full text-gray-500">
         <h1 className="text-3xl font-bold mb-4">User Settings</h1>
+        <UserAvatar />
         <form onSubmit={handleSubmit} className="max-w-lg">
-          <div className="mb-4">
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={user.username}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-              readOnly
-            />
-          </div>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -58,7 +47,7 @@ const UserSettingsPage = () => {
               type="email"
               id="email"
               name="email"
-              value={user.email}
+              defaultValue={loggedInUser?.email}
               onChange={handleChange}
               className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             />
