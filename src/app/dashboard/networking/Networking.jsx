@@ -7,12 +7,12 @@ import Modal from './Modal';
 import SummaryCard from './SummaryCard';
 import generateDummyTeachers from "./generateDummyTeachers"
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
-import toast from "react-toastify"
-
+import { toast } from 'react-toastify';
 
 const NetworkingPage = () => {
   const [teachers,setTeachers] = useState(generateDummyTeachers(20)); // Assume generateDummyTeachers function is imported
   const [searchResults, setSearchResults] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState(null);

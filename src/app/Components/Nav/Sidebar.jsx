@@ -4,9 +4,7 @@ import { BsChatDots } from "react-icons/bs";
 import { SlHome } from "react-icons/sl";
 import { GoBook } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
-import { VscSearch } from "react-icons/vsc";
-import { TbBrandBlogger, TbLogout2 } from "react-icons/tb";
-import { FaRegBookmark } from "react-icons/fa";
+import {  TbLogout2 } from "react-icons/tb";
 import { FaNetworkWired } from "react-icons/fa";
 import { GiNewspaper } from "react-icons/gi";
 import { RiSettings4Line } from "react-icons/ri";
@@ -15,10 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { PiStudent } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { useRouter } from "next/navigation";
-import {useRouter as useLocation} from "next/router"
 import { selectNav, toggleSidebar } from "./../../../lib/features/navSlice";
 import { logoutUser } from "../../../lib/features/authSlice";
 import { PiChatCircleDots } from "react-icons/pi";
+import Link from "next/link";
 
 
 const Sidebar = () => {
