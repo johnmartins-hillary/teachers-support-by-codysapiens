@@ -6,29 +6,13 @@ import TextArea from "../../Components/Form/TextArea";
 import Button from "../../Components/Form/Button";
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
 import WhiteShadowCard from "../../Components/Reusables/Cards/WhiteShadowCard";
-
-
-// Sample data for posts and comments
-const initialPosts = [
-  {
-    id: 1,
-    title: "First Post",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    comments: [],
-  },
-  {
-    id: 2,
-    title: "Second Post",
-    content:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    comments: [],
-  },
-];
+import { selectDiscussion,setPosts,setNewPostTitle,setNewPostContent } from "../../../lib/features/discussionSlice";
+import {useSelector, useDispatch} from "react-redux"
+import { toast } from "react-toastify";
 
 const DiscussionForum = () => {
-  const [posts, setPosts] = useState(initialPosts);
-  const [newPostTitle, setNewPostTitle] = useState("");
-  const [newPostContent, setNewPostContent] = useState("");
+  const {posts, newPostTitle, newPostContent} = useSelector(selectDiscussion)
+  const dispatch  = useDispatch()
 
   const handleNewPostSubmit = (e) => {
     e.preventDefault();
@@ -38,9 +22,10 @@ const DiscussionForum = () => {
       content: newPostContent,
       comments: [],
     };
-    setPosts([...posts, newPost]);
-    setNewPostTitle("");
-    setNewPostContent("");
+    dispatch(setPosts([...posts, newPost]));
+    dispatch(setNewPostTitle(""));
+    dispatch(setNewPostContent(""));
+    toast.success("post added successfully")
   };
 
   const handleCommentSubmit = (postId, commentContent) => {

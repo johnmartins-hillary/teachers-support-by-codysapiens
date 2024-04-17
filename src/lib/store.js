@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import { authReducer } from "./features/authSlice";
 import { navReducer } from "./features/navSlice";
 import { userReducer } from "./features/userSlice";
+import { discussionReducer } from "./features/discussionSlice";
 
 const persistConfig = {
   key: "root",
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   nav: navReducer,
   user: userReducer,
+  discussion: discussionReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
