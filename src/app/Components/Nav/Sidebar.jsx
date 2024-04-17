@@ -95,7 +95,7 @@ const Sidebar = () => {
       <div className="flex gap-x-4 items-center">
         <img
           className=" h-10 w-auto"
-          src={logo}
+          src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=600"
           alt="Your Company"
         />
         <h1
