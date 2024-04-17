@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
+import {toast} from "react-toastify"
 
 
 const NewsPage = () => {
@@ -19,7 +20,7 @@ const NewsPage = () => {
          `https://newsapi.org/v2/everything?q=education&sortBy=publishedAt&apiKey=2a8c15b34b784497ab23efca9b4ddcd6`
        );
        if (!response.ok) {
-         throw new Error("Failed to fetch news data");
+         toast.error("Failed to fetch news data");
        }
        const data = await response.json();
        setNews(data.articles);
@@ -36,7 +37,7 @@ const NewsPage = () => {
  // Pagination Logic
  const indexOfLastArticle = currentPage * articlesPerPage;
  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
- const currentArticles = news.slice(indexOfFirstArticle, indexOfLastArticle);
+ const currentArticles = news?.length > 0 ? news?.slice(indexOfFirstArticle, indexOfLastArticle) : [];
 
  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 

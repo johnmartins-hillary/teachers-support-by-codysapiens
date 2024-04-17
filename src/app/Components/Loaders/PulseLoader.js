@@ -10,14 +10,15 @@ const override = {
 
 class Loader extends Component {
   render() {
-    const { size, color } = this.props;
+    const { size, color, className } = this.props;
     return (
-      <div className="sweet-loading">
+      <div className="flex items-center justify-center sweet-loading w-full">
         <PulseLoader
           style={override}
           size={size ? size : 5}
           color={color ? color : "#fff"}
           loading={true}
+          className={className}
         />
       </div>
     );

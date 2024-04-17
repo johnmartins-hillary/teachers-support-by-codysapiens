@@ -8,7 +8,7 @@ import Pagination from './Paginatioin';
 
 const BooksPage = () => {
   const [books, setBooks] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('man');
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false)
   const booksPerPage = 9;
@@ -16,7 +16,7 @@ const BooksPage = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`http://openlibrary.org/search.json?q=${searchTerm}`);
+        const response = await fetch(`http://openlibrary.org/search.json?q=${searchTerm || initSearch}`);
         if (!response.ok) {
           throw new Error('Failed to fetch book data');
         }
@@ -29,8 +29,10 @@ const BooksPage = () => {
             key: book.key,
           }));
           setBooks(formattedBooks);
+          setLoading(false)
         } else {
           setBooks([]);
+          setLoading(false)
         }
       } catch (error) {
         console.error(error);
@@ -38,17 +40,18 @@ const BooksPage = () => {
     };
 
     if (searchTerm.trim() !== '') {
+      setLoading(true)
       fetchBooks();
     } else {
       setBooks([]);
     }
   }, [searchTerm]);
 
+
+
   const handleSearch = (term) => {
-    setLoading(true)
     setSearchTerm(term);
     setCurrentPage(1);
-    setLoading(false)
   };
 
   const handlePageChange = (page) => {

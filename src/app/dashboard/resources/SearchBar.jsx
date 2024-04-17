@@ -8,10 +8,11 @@ const SearchBar = ({ placeholder, onSearch }) => {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
+    onSearch(e.target.value);
   };
 
   const handleSearch = () => {
-    onSearch(searchTerm);
+    // onSearch(searchTerm);
   }
 
   return (
