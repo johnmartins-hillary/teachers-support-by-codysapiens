@@ -98,7 +98,7 @@ const Sidebar = () => {
           src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=600"
           alt="Your Company"
         />
-        <h1
+      <h1
           className={`text-white origin-left font-medium text-xl duration-200 ${
             !openSidebar && "scale-0"
           }`}
