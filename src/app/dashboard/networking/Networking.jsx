@@ -1,7 +1,7 @@
 "use client"
 // NetworkingPage.js
 import React, { useState } from 'react';
-import SearchBar from './SearchBar';
+import SearchBar from './Searchbar';
 import TeacherCard from './TeacherCard';
 import Modal from './Modal';
 import SummaryCard from './SummaryCard';

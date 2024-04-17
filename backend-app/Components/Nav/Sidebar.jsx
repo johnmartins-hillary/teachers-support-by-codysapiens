@@ -15,7 +15,6 @@ import { PiStudent } from "react-icons/pi";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { useRouter } from "next/navigation";
 import { selectNav } from "./../../../lib/features/navSlice";
-import Link from "next/Link"
 
 const Sidebar = () => {
   const { openSidebar } = useSelector(selectNav);

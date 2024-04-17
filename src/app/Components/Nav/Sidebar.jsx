@@ -19,7 +19,6 @@ import {useRouter as useLocation} from "next/router"
 import { selectNav, toggleSidebar } from "./../../../lib/features/navSlice";
 import { logoutUser } from "../../../lib/features/authSlice";
 import { PiChatCircleDots } from "react-icons/pi";
-import Link from "next/Link"
 
 
 const Sidebar = () => {
