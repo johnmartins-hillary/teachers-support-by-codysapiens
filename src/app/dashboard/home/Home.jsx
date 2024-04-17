@@ -6,16 +6,12 @@ import WhiteShadowCard from "../../Components/Reusables/Cards/WhiteShadowCard";
 import {
   students,
   newBooks,
-  jobOffers,
-  blogs,
   discussionPosts,
   updates,
-  events,
 } from "./utils";
 import { IoSchool } from "react-icons/io5";
 import { ImBooks } from "react-icons/im";
-import { MdOutlineWork,MdPostAdd, MdTipsAndUpdates,MdEvent} from "react-icons/md";
-import { FaBlog } from "react-icons/fa";
+import { MdPostAdd, MdTipsAndUpdates} from "react-icons/md";
 import { useSelector } from "react-redux";
 import { selectAuth } from "../../../lib/features/authSlice";
 
@@ -54,30 +50,7 @@ const {loggedInUser} = useSelector(selectAuth)
               </div>
             ))}
           </WhiteShadowCard>
-          {/* Latest Job Offers for Teachers */}
-          <WhiteShadowCard
-            title="Latest Job Offers for Teachers"
-            icon={<MdOutlineWork size={24} />}
-            link="/dashboard/job-board"
-          >
-            {jobOffers?.map((offer) => (
-              <div key={offer.id} className="border-b py-2">
-                {offer.position} - {offer.location}
-              </div>
-            ))}
-          </WhiteShadowCard>
-          {/* Latest Blogs */}
-          <WhiteShadowCard
-            title="Latest Blogs"
-            icon={<FaBlog size={24} />}
-            link="/dashboard/blog"
-          >
-            {blogs?.map((blog) => (
-              <div key={blog.id} className="border-b py-2">
-                {blog.title} by {blog.author}
-              </div>
-            ))}
-          </WhiteShadowCard>
+         
           {/* Latest Posts in Discussion Forum */}
           <WhiteShadowCard
             title="Latest Posts in Discussion Forum"
@@ -99,18 +72,6 @@ const {loggedInUser} = useSelector(selectAuth)
             {updates?.map((update) => (
               <div key={update.id} className="border-b py-2">
                 {update.title}: {update.description}
-              </div>
-            ))}
-          </WhiteShadowCard>
-          {/* Upcoming Events */}
-          <WhiteShadowCard
-            title="Upcoming Events"
-            icon={<MdEvent size={24} />}
-            link="/dashboard/calender-event"
-          >
-            {events?.map((event) => (
-              <div key={event.id} className="border-b py-2">
-                {event.name} - {event.date}
               </div>
             ))}
           </WhiteShadowCard>
