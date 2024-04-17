@@ -15,7 +15,7 @@ const LessonCard = ({ lesson, onClick }) => {
       <p className="text-gray-600 mb-2">{lesson.description.length > 30 ? lesson.description.substring(0, 30) + "..." : lesson?.description}</p>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-gray-500">
-          <span className="mr-1 flex items-center">{lesson.type === "video" ? <SlEye /> : lesson.type="audio" ? <IoHeadset /> :<FaBookReader /> }: {lesson.students}</span>
+          <span className="mr-1 flex items-center">{lesson.lessonType === "video" ? <SlEye /> : lesson.lessonType="text" ?<FaBookReader /> :  <IoHeadset />}: {lesson.students}</span>
           <span className="mr-1 flex items-center"><HiThumbUp />: {lesson.likes}</span>
           <span className="flex items-center" ><HiThumbDown />: {lesson.dislikes}</span>
         </div>

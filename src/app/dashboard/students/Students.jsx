@@ -13,7 +13,7 @@ const StudentsPage = () => {
     {
       id: 1,
       name: "John Doe",
-      email: "john.doe@example.com",
+      email: "john.doe@gmail.com",
       age: 25,
       gender: "Male",
       location: "New York",
@@ -22,7 +22,7 @@ const StudentsPage = () => {
     {
       id: 2,
       name: "Jane Smith",
-      email: "jane.smith@example.com",
+      email: "jane.smith@gmail.com",
       age: 22,
       gender: "Female",
       location: "Los Angeles",
@@ -79,7 +79,7 @@ const StudentsPage = () => {
     return {
       id,
       name: `${firstName} ${lastName}`,
-      email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@example.com`,
+      email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@gmail.com`,
       age,
       gender,
       location,
