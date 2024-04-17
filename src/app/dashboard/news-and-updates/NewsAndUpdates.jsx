@@ -4,35 +4,36 @@ import React, { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
 import PageWrapper from "../../Components/Reusables/Wrapers/PageWrappper";
 import {toast} from "react-toastify"
+import {newsData} from "./util"
 
 
 const NewsPage = () => {
- const [news, setNews] = useState([]);
+ const [news, setNews] = useState(newsData);
  const [error, setError] = useState(null);
  const [loading, setLoading] = useState(true);
  const [currentPage, setCurrentPage] = useState(1);
  const articlesPerPage = 6; // Adjust the number of articles per page as needed
 
- useEffect(() => {
-   const fetchNews = async () => {
-     try {
-       const response = await fetch(
-         `https://newsapi.org/v2/everything?q=education&sortBy=publishedAt&apiKey=2a8c15b34b784497ab23efca9b4ddcd6`
-       );
-       if (!response.ok) {
-         toast.error("Failed to fetch news data");
-       }
-       const data = await response.json();
-       setNews(data.articles);
-       setLoading(false);
-     } catch (error) {
-       setError(error.message);
-       setLoading(false);
-     }
-   };
+//  useEffect(() => {
+//    const fetchNews = async () => {
+//      try {
+//        const response = await fetch(
+//          `https://newsapi.org/v2/everything?q=education&sortBy=publishedAt&apiKey=2a8c15b34b784497ab23efca9b4ddcd6`
+//        );
+//        if (!response.ok) {
+//          toast.error("Failed to fetch news data");
+//        }
+//        const data = await response.json();
+//        setNews(data.articles);
+//        setLoading(false);
+//      } catch (error) {
+//        setError(error.message);
+//        setLoading(false);
+//      }
+//    };
 
-   window.navigator.onLine && fetchNews();
- }, []);
+//    window.navigator.onLine && fetchNews();
+//  }, []);
 
  // Pagination Logic
  const indexOfLastArticle = currentPage * articlesPerPage;
@@ -41,13 +42,13 @@ const NewsPage = () => {
 
  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
- if (loading) {
-   return <div>Loading...</div>;
- }
+//  if (loading) {
+//    return <div>Loading...</div>;
+//  }
 
- if (error) {
-   return <div>Error: {error}</div>;
- }
+//  if (error) {
+//    return <div>Error: {error}</div>;
+//  }
 
 
   return (

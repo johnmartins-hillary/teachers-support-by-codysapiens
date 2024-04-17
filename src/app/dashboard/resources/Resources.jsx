@@ -14,37 +14,37 @@ const BooksPage = () => {
   const booksPerPage = 9;
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch(`http://openlibrary.org/search.json?q=${searchTerm || initSearch}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch book data');
-        }
-        const data = await response.json();
-        if (data.docs) {
-          const formattedBooks = data.docs.map(book => ({
-            title: book.title,
-            author: book.author_name ? book.author_name.join(', ') : 'Unknown author',
-            cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null,
-            key: book.key,
-          }));
-          setBooks(formattedBooks);
-          setLoading(false)
-        } else {
-          setBooks([]);
-          setLoading(false)
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    // const fetchBooks = async () => {
+    //   try {
+    //     const response = await fetch(`http://openlibrary.org/search.json?q=${searchTerm || initSearch}`);
+    //     if (!response.ok) {
+    //       throw new Error('Failed to fetch book data');
+    //     }
+    //     const data = await response.json();
+    //     if (data.docs) {
+    //       const formattedBooks = data.docs.map(book => ({
+    //         title: book.title,
+    //         author: book.author_name ? book.author_name.join(', ') : 'Unknown author',
+    //         cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null,
+    //         key: book.key,
+    //       }));
+    //       setBooks(formattedBooks);
+    //       setLoading(false)
+    //     } else {
+    //       setBooks([]);
+    //       setLoading(false)
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
 
-    if (searchTerm.trim() !== '') {
-      setLoading(true)
-      fetchBooks();
-    } else {
-      setBooks([]);
-    }
+    // if (searchTerm.trim() !== '') {
+    //   setLoading(true)
+    //   fetchBooks();
+    // } else {
+    //   setBooks([]);
+    // }
   }, [searchTerm]);
 
 
@@ -60,8 +60,8 @@ const BooksPage = () => {
 
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
-  const displayedBooks = books.slice(indexOfFirstBook, indexOfLastBook);
-  const totalPages = Math.ceil(books.length / booksPerPage);
+  const displayedBooks = books?.slice(indexOfFirstBook, indexOfLastBook);
+  const totalPages = Math.ceil(books?.length / booksPerPage);
 
   return (
     <PageWrapper>
