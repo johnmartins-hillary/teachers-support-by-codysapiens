@@ -38,7 +38,7 @@ const DiscussionForum = () => {
       }
       return post;
     });
-    setPosts(updatedPosts);
+    dispatch(setPosts(updatedPosts));
   };
 
   return (
@@ -50,13 +50,13 @@ const DiscussionForum = () => {
             type="text"
             placeholder="Enter post title"
             value={newPostTitle}
-            onChangeHandler={(e) => setNewPostTitle(e.target.value)}
+            onChangeHandler={(e) => dispatch(setNewPostTitle(e.target.value))}
             className="border border-gray-300 rounded-md p-2 mr-2"
           />
           <TextArea
             placeholder="Enter post content"
             value={newPostContent}
-            onChangeHandler={(e) => setNewPostContent(e.target.value)}
+            onChangeHandler={(e) => dispatch(setNewPostContent(e.target.value))}
             className="border border-gray-300 rounded-md p-2"
           />
           <Button
