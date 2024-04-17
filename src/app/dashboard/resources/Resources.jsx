@@ -10,6 +10,7 @@ const BooksPage = () => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false)
   const booksPerPage = 9;
 
   useEffect(() => {
@@ -44,8 +45,10 @@ const BooksPage = () => {
   }, [searchTerm]);
 
   const handleSearch = (term) => {
+    setLoading(true)
     setSearchTerm(term);
     setCurrentPage(1);
+    setLoading(false)
   };
 
   const handlePageChange = (page) => {
@@ -62,7 +65,7 @@ const BooksPage = () => {
       <div className="container mx-auto my-8 px-8 gap-y-4 text-gray-500">
         <h1 className="text-3xl font-bold mb-8 text-gray-500">Books</h1>
         <SearchBar placeholder="Search books..." onSearch={handleSearch} />
-        <BooksGrid books={displayedBooks} />
+        <BooksGrid books={displayedBooks} loading={loading}/>
         <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </div>
     </PageWrapper>

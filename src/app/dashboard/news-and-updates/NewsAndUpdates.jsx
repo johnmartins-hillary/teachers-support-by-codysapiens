@@ -30,7 +30,7 @@ const NewsPage = () => {
      }
    };
 
-   fetchNews();
+   window.navigator.onLine && fetchNews();
  }, []);
 
  // Pagination Logic
@@ -54,7 +54,7 @@ const NewsPage = () => {
     <div className="text-gray-500 p-8">
       <h2 className="text-2xl font-bold mb-4">Latest News and Updates</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {currentArticles.map((article, index) => (
+        {currentArticles?.map((article, index) => (
           <NewsCard
             key={index}
             title={article.title}
