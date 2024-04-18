@@ -6,7 +6,8 @@ import LessonModal from './LessonModal';
 import LessonForm from './LessonForm';
 import Pagination from "./Pagintaion"
 
-const lessonsDummyData = [
+
+const dummyLessons = [
   { 
     id: 5, 
     title: 'Creative Writing Workshop', 
@@ -14,7 +15,8 @@ const lessonsDummyData = [
     students: 40, 
     likes: 22, 
     dislikes: 3, 
-    lessonType: 'text' 
+    lessonType: 'text',
+    lessonSection:"text",
   },
   { 
     id: 6, 
@@ -24,7 +26,9 @@ const lessonsDummyData = [
     likes: 19, 
     dislikes: 2, 
     lessonType: 'video', 
-    media: 'https://www.youtube.com/embed/dQw4w9WgXcQ' 
+    media: 'https://www.youtube.com/embed/vrU6YJle6Q4',
+    lessonSection:"video",
+
   },
   { 
     id: 7, 
@@ -33,7 +37,9 @@ const lessonsDummyData = [
     students: 30, 
     likes: 16, 
     dislikes: 4, 
-    lessonType: 'text' 
+    lessonType: 'text',
+    lessonSection:"text",
+
   },
   { 
     id: 8, 
@@ -43,7 +49,9 @@ const lessonsDummyData = [
     likes: 12, 
     dislikes: 1, 
     lessonType: 'video', 
-    media: 'https://www.youtube.com/embed/dQw4w9WgXcQ' 
+    media: 'https://www.youtube.com/embed/vrU6YJle6Q4' ,
+    lessonSection:"video",
+
   },
   { 
     id: 9, 
@@ -52,7 +60,9 @@ const lessonsDummyData = [
     students: 20, 
     likes: 10, 
     dislikes: 2, 
-    lessonType: 'text' 
+    lessonType: 'text',
+    lessonSection:"text",
+
   },
   { 
     id: 10, 
@@ -62,7 +72,9 @@ const lessonsDummyData = [
     likes: 18, 
     dislikes: 3, 
     lessonType: 'video', 
-    media: 'https://www.youtube.com/embed/dQw4w9WgXcQ' 
+    media: 'https://www.youtube.com/embed/vrU6YJle6Q4' ,
+    lessonSection:"video",
+
   },
   { 
     id: 11, 
@@ -71,7 +83,8 @@ const lessonsDummyData = [
     students: 50, 
     likes: 25, 
     dislikes: 4, 
-    lessonType: 'text' 
+    lessonType: 'text',
+    lessonSection:"text",
   },
   { 
     id: 12, 
@@ -81,16 +94,13 @@ const lessonsDummyData = [
     likes: 20, 
     dislikes: 3, 
     lessonType: 'video', 
-    media: 'https://www.youtube.com/embed/dQw4w9WgXcQ' 
+    media: 'https://www.youtube.com/embed/vrU6YJle6Q4',
+    lessonSection:"video",
+
   }
-];
-
-
+]
 const LessonsPage = () => {
-  // Hardcoded lesson data for demonstration
-  const [lessons, setLessons] = useState(lessonsDummyData);
-
-  // State for handling modal visibility and selected lesson
+  const [lessons, setLessons] = useState(dummyLessons)
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLesson, setSelectedLesson] = useState(null);
 
@@ -99,7 +109,7 @@ const LessonsPage = () => {
   const lessonsPerPage = 6; // Number of lessons per page
   const indexOfLastLesson = currentPage * lessonsPerPage;
   const indexOfFirstLesson = indexOfLastLesson - lessonsPerPage;
-  const currentLessons = lessons.slice(indexOfFirstLesson, indexOfLastLesson);
+  const currentLessons = lessons?.slice(indexOfFirstLesson, indexOfLastLesson);
 
   // Function to handle card click and open modal
   const handleCardClick = (lesson) => {
@@ -122,7 +132,7 @@ const LessonsPage = () => {
     setCurrentPage(pageNumber);
   };
 
-  console.log(lessons)
+
 
   return (
     <PageWrapper>
@@ -130,7 +140,7 @@ const LessonsPage = () => {
       <h1 className="text-3xl font-bold mb-8">Lessons</h1>
       {/* Lesson grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        {currentLessons.map((lesson) => (
+        {lessons?.sort((a, b) => b.id - a.id)?.map((lesson) => (
           <LessonCard key={lesson.id} lesson={lesson} onClick={() => handleCardClick(lesson)} />
         ))}
       </div>
@@ -139,16 +149,16 @@ const LessonsPage = () => {
         <LessonModal lesson={selectedLesson} onClose={handleCloseModal} />
       )}
       {/* Pagination */}
-      <div className="flex justify-center mt-8">
+      {/* <div className="flex justify-center mt-8">
         <Pagination
           currentPage={currentPage}
-          totalItems={lessons.length}
+          totalItems={lessons?.length}
           itemsPerPage={lessonsPerPage}
           onPageChange={handlePageChange}
         />
-      </div>
+      </div> */}
       {/* Lesson form */}
-      <LessonForm onSubmit={handleAddLesson} />
+      <LessonForm onSubmit={handleAddLesson} lessons={lessons}/>
     </div>
     </PageWrapper>
   );

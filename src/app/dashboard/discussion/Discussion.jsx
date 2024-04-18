@@ -16,21 +16,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const DiscussionForum = () => {
-  const { posts, newPostTitle, newPostContent } = useSelector(selectDiscussion);
+  const { posts} = useSelector(selectDiscussion);
+  const [newPostTitle, setNewPostTitle] = useState("")
+  const [newPostContent, setNewPostContent]  =  useState("")
   const dispatch = useDispatch();
 
   const handleNewPostSubmit = (e) => {
     e.preventDefault();
-    const newPost = {
+
+    if(newPostTitle && newPostContent){
+       const newPost = {
       id: posts.length + 1,
       title: newPostTitle,
       content: newPostContent,
       comments: [],
     };
-    dispatch(setPosts([...posts, newPost]));
-    dispatch(setNewPostTitle(""));
-    dispatch(setNewPostContent(""));
+   dispatch(setPosts([...posts, newPost]))
+   setNewPostTitle("");
+   setNewPostContent("");
     toast.success("Discussion started");
+    }else{
+      toast.error("Content and title cannot be empty")
+    }
+   
   };
 
   const handleCommentSubmit = (postId, commentContent) => {
@@ -43,7 +51,11 @@ const DiscussionForum = () => {
       }
       return post;
     });
+    if(commentContent){
     dispatch(setPosts(updatedPosts));
+    }else{
+      toast.error("comment cannot be empty field")
+    }
   };
 
   return (
@@ -55,13 +67,13 @@ const DiscussionForum = () => {
             type="text"
             placeholder="Enter post title"
             value={newPostTitle}
-            onChangeHandler={(e) => dispatch(setNewPostTitle(e.target.value))}
+            onChangeHandler={(e) => setNewPostTitle(e.target.value)}
             className="border border-gray-300 rounded-md p-2 mr-2"
           />
           <TextArea
             placeholder="Enter post content"
             value={newPostContent}
-            onChangeHandler={(e) => dispatch(setNewPostContent(e.target.value))}
+            onChangeHandler={(e) => setNewPostContent(e.target.value)}
             className="border border-gray-300 rounded-md p-2"
           />
           <Button
@@ -80,7 +92,6 @@ const DiscussionForum = () => {
             </h4>
             <ul className="text-blue-500 list-disc ml-4">
               {post?.comments
-                ?.reverse()
                 ?.map((comment, index) => (
                   <li key={index} className="ml-4">
                     {comment}

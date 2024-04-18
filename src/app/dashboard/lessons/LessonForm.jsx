@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LessonForm = ({ onSubmit }) => {
+const LessonForm = ({ onSubmit, lessons }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [type, setType] = useState('text');
@@ -9,10 +9,10 @@ const LessonForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newLesson = {
-      id: Math.floor(Math.random() * 1000),
+      id: lessons[lessons.length - 1]?.id + 1,
       title,
       description,
-      type,
+      lessonSection: type,
       media,
       students: 0,
       likes: 0,

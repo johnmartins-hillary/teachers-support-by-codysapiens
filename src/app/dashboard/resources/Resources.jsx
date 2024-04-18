@@ -5,10 +5,11 @@ import PageWrapper from '../../Components/Reusables/Wrapers/PageWrappper';
 import SearchBar from './SearchBar';
 import BooksGrid from './BookGrid';
 import Pagination from './Paginatioin';
+import ResourcesData from "./util"
 
 const BooksPage = () => {
   const [books, setBooks] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('man');
+  const [searchTerm, setSearchTerm] = useState("man");
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false)
   const booksPerPage = 9;
@@ -16,7 +17,7 @@ const BooksPage = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`http://openlibrary.org/search.json?q=${searchTerm || initSearch}&limit=10`);
+        const response = await fetch(`http://openlibrary.org/search.json?q=${searchTerm || initSearch}&limit=3`);
         if (!response.ok) {
           throw new Error('Failed to fetch book data');
         }
@@ -39,11 +40,27 @@ const BooksPage = () => {
       }
     };
 
-    if (searchTerm.trim() !== '') {
+    const initialData = () => {
+      if (ResourcesData?.docs) {
+          const formattedBooks = ResourcesData.docs.map(book => ({
+            title: book.title,
+            author: book.author_name ? book.author_name.join(', ') : 'Unknown author',
+            cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : null,
+            key: book.key,
+          }));
+          setBooks(formattedBooks);
+          setLoading(false)
+        } else {
+          setBooks([]);
+          setLoading(false)
+        }
+    }
+
+    if ( searchTerm && searchTerm.trim() !== '') {
       setLoading(true)
       fetchBooks();
     } else {
-      setBooks([]);
+      initialData()
     }
   }, [searchTerm]);
 
